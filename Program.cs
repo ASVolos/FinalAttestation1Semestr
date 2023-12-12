@@ -13,6 +13,20 @@ public class MainClass
 {
     public static void Main()
     {
+        // Метод, который заполняет массив элементами с трями и менее символами
+        string[] NewArray(string[] oldArray)
+        {
+            string[] newArray = new string[oldArray.Length];
+
+            for (int i = 0; i < oldArray.Length; i++)
+            {
+                if (oldArray[i].Length <= 3)
+                {
+                    newArray[i] = oldArray[i];
+                }
+            }
+            return newArray;
+        }
         // метод, который запрашивает элементы в консоле и заполняет им массив
         string[] FillArray()
         {
@@ -37,6 +51,7 @@ public class MainClass
         }
         // Вызов методов
         string[] oldArray = FillArray();   //[“Hello”, “2”, “world”, “:-)”] → [“2”, “:-)”]
+        PrintArray(NewArray(oldArray));
     }
 }
 
