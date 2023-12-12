@@ -13,16 +13,30 @@ public class MainClass
 {
     public static void Main()
     {
-        // Метод, который заполняет массив элементами с трями и менее символами
-        string[] NewArray(string[] oldArray)
+        // Метод считающий количество элементов <= 3, чтобы понять, какого размера нужен будет новой массив
+        int SizeNewArray(string[] array)
         {
-            string[] newArray = new string[oldArray.Length];
-
+            int count = 0;
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i].Length <= 3)
+                {
+                    count++;
+                }
+            }
+            return count;
+        }
+        // Метод, который заполняет массив элементами с трями и менее символами
+        string[] NewArray(string[] oldArray, int size)
+        {
+            string[] newArray = new string[size];
+            int j = 0;
             for (int i = 0; i < oldArray.Length; i++)
             {
                 if (oldArray[i].Length <= 3)
                 {
-                    newArray[i] = oldArray[i];
+                        newArray[j] = oldArray[i];
+                        j++;
                 }
             }
             return newArray;
@@ -51,7 +65,8 @@ public class MainClass
         }
         // Вызов методов
         string[] oldArray = FillArray();   //[“Hello”, “2”, “world”, “:-)”] → [“2”, “:-)”]
-        PrintArray(NewArray(oldArray));
+        int size = SizeNewArray(oldArray);
+        PrintArray(NewArray(oldArray, size));
     }
 }
 
